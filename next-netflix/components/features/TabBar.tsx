@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import HomeIcon from "../../images/home.svg";
-import DownLoadIcon from "../../images/download.svg";
-import PlayIcon from "../../images/play.svg";
-import SearchIcon from "../../images/search.svg";
-import BurgerIcon from "../../images/burger.svg";
+import HomeIcon from "@/images/tabBar/home.svg";
+import DownLoadIcon from "@/images/tabBar/download.svg";
+import PlayIcon from "@/images/tabBar/play.svg";
+import SearchIcon from "@/images/tabBar/search.svg";
+import BurgerIcon from "@/images/tabBar/burger.svg";
 
 type Item = {
   href: string;
@@ -16,7 +16,7 @@ type Item = {
 };
 
 const items: ReadonlyArray<Item> = [
-  { href: "/", label: "Home", Icon: HomeIcon },
+  { href: "/home", label: "Home", Icon: HomeIcon },
   { href: "/search", label: "Search", Icon: SearchIcon },
   {
     href: "/coming-soon",
@@ -36,11 +36,16 @@ const items: ReadonlyArray<Item> = [
 export function TabBar() {
   const pathname = usePathname();
 
+  // 랜딩 페이지에서는 TabBar 숨기기
+  if (pathname === "/") {
+    return null;
+  }
+
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#121212] backdrop-blur">
+    <nav className="absolute inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#121212] backdrop-blur">
       <ul
         className="
-          mx-auto grid max-w-[375px]
+          grid w-full
           grid-cols-5 justify-items-center
           px-[30px]
           pb-[calc(8px+env(safe-area-inset-bottom))] pt-2
@@ -48,7 +53,7 @@ export function TabBar() {
       >
         {items.map(({ href, label, Icon, adjust }) => {
           const active =
-            href === "/" ? pathname === "/" : pathname.startsWith(href);
+            href === "/home" ? pathname === "/home" : pathname.startsWith(href);
 
           return (
             <li key={href} className="flex flex-col items-center">

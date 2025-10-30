@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import SplashScreen from "@/components/landingPage/SplashScreen";
+import { TabBar } from "@/components/features/TabBar";
+import { NavBar } from "@/components/features/NavBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,13 +39,14 @@ export default function RootLayout({
         <div
           style={{
             width: "375px",
-            minHeight: "100vh",
+            minHeight: "811.7px",
             backgroundColor: "#fff",
             position: "relative",
           }}
         >
-          <SplashScreen />
+          <NavBar />
           {children}
+          <TabBar />
         </div>
       </body>
     </html>

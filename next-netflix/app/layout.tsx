@@ -1,8 +1,9 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import { TabBar } from "@/components/features/TabBar";
 import { NavBar } from "@/components/features/NavBar";
+import Providers from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,9 +22,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
@@ -36,18 +37,21 @@ export default function RootLayout({
           backgroundColor: "#000",
         }}
       >
-        <div
-          style={{
-            width: "375px",
-            minHeight: "811.7px",
-            backgroundColor: "#fff",
-            position: "relative",
-          }}
-        >
-          <NavBar />
-          {children}
-          <TabBar />
-        </div>
+        <Providers>
+          <div
+            className="min-h-dvh pb-[calc(72px+env(safe-area-inset-bottom))]"
+            style={{
+              width: "375px",
+              minHeight: "811.7px",
+              backgroundColor: "#000",
+              position: "relative",
+            }}
+          >
+            <NavBar />
+            {children}
+            <TabBar />
+          </div>
+        </Providers>
       </body>
     </html>
   );

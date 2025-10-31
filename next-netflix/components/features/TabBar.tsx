@@ -42,11 +42,12 @@ export function TabBar() {
   }
 
   return (
-    <nav className="absolute inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#121212] backdrop-blur">
+    <nav className="fixed w-[375px] h-[53px] inset-x-0 left-1/2 bottom-0 -translate-x-1/2 z-50 border-t border-white/10 bg-[#121212] backdrop-blur">
       <ul
         className="
           grid w-full
           grid-cols-5 justify-items-center
+          gap-x-10 
           px-[30px]
           pb-[calc(8px+env(safe-area-inset-bottom))] pt-2
         "
@@ -62,13 +63,14 @@ export function TabBar() {
                   className={[
                     "block h-6 w-6",
                     active ? "text-white" : "text-[#8c8787]",
+
                     adjust ?? "",
                   ]
                     .filter(Boolean)
                     .join(" ")}
                 />
                 <span
-                  className={`text-[8.2px] ${
+                  className={`text-[8.2px] whitespace-nowrap ${
                     active ? "text-white" : "text-[#8c8787]"
                   }`}
                 >

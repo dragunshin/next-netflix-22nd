@@ -26,38 +26,38 @@ export function NavBar() {
     <nav
       className="absolute top-0 left-0 z-50 flex items-center"
       style={{
-        width: '338px',
-        height: '57px',
-        paddingTop: '24px',
-        paddingLeft: '16px',
-        backgroundColor: 'transparent'
+        width: "338px",
+        height: "57px",
+        paddingTop: "24px",
+        paddingLeft: "16px",
+        backgroundColor: "transparent",
       }}
     >
       <Link
         href="/home"
         className="flex items-center"
         style={{
-          width: '56.67px',
-          height: '100%'
+          width: "56.67px",
+          height: "100%",
         }}
       >
         <NetflixIcon
           style={{
-            width: '56.67px',
-            height: 'auto'
+            width: "56.67px",
+            height: "auto",
           }}
         />
       </Link>
-      <ul className="flex items-center ml-6" style={{ gap: '32px' }}>
+      <ul className="flex items-center ml-6" style={{ gap: "32px" }}>
         {menuItems.map(({ href, label }) => (
           <li key={href}>
             <Link
               href={href}
               style={{
-                fontSize: '17.2px',
-                whiteSpace: 'nowrap'
+                fontSize: "17.2px",
+                whiteSpace: "nowrap",
               }}
-              className="text-black"
+              className="text-white"
             >
               {label}
             </Link>

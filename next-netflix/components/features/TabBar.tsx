@@ -42,12 +42,11 @@ export function TabBar() {
   }
 
   return (
-    <nav className="absolute inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#121212] backdrop-blur">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-black backdrop-blur" style={{ maxWidth: '375px', margin: '0 auto' }}>
       <ul
         className="
           grid w-full
           grid-cols-5 justify-items-center
-          px-[30px]
           pb-[calc(8px+env(safe-area-inset-bottom))] pt-2
         "
       >

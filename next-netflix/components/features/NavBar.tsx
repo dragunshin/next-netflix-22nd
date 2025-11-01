@@ -24,13 +24,14 @@ export function NavBar() {
 
   return (
     <nav
-      className="absolute top-0 left-0 z-50 flex items-center"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center"
       style={{
-        width: '338px',
+        maxWidth: '375px',
         height: '57px',
         paddingTop: '24px',
         paddingLeft: '16px',
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        margin: '0 auto'
       }}
     >
       <Link
@@ -57,7 +58,7 @@ export function NavBar() {
                 fontSize: '17.2px',
                 whiteSpace: 'nowrap'
               }}
-              className="text-black"
+              className="text-white"
             >
               {label}
             </Link>

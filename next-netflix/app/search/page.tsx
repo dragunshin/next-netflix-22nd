@@ -5,9 +5,9 @@ import Image from "next/image";
 import { useSearchMovies } from "@/hooks/useSearchMovies";
 import { useTopRatedMovies } from "@/hooks/useTopRatedMovies";
 import { tmdbImage } from "@/lib/tmdbImage";
-import SearchIcon from "@/images/SearchPage/search.svg";
-import DeleteIcon from "@/images/SearchPage/delete.svg";
-import PlayIcon from "@/images/SearchPage/play.svg";
+import SearchIcon from "@/images/searchPage/search.svg";
+import DeleteIcon from "@/images/searchPage/delete.svg";
+import PlayIcon from "@/images/searchPage/play.svg";
 
 export default function SearchPage() {
   const [query, setQuery] = useState("");

@@ -18,7 +18,7 @@ const menuItems: ReadonlyArray<MenuItem> = [
 export function NavBar() {
   const pathname = usePathname();
 
-  if (pathname === "/") {
+  if (pathname === "/" || pathname === "/search") {
     return null;
   }
 

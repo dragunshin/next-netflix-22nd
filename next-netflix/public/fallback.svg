@@ -1,0 +1,11 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="500" height="750" viewBox="0 0 500 750" xmlns="http://www.w3.org/2000/svg">
+  <!-- 2:3 비율, 라이트 그레이 그라데이션 (gray-200 ~ slate-300 느낌) -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e5e7eb"></stop> <!-- gray-200 -->
+      <stop offset="100%" stop-color="#cbd5e1"></stop> <!-- slate-300 -->
+    </linearGradient>
+  </defs>
+  <rect width="500" height="750" fill="url(#g)"></rect>
+</svg>

@@ -13,17 +13,13 @@ export default function LandingPage() {
 
   return (
     <div
-      className="absolute inset-0 z-50 flex items-center justify-center bg-black"
-      style={{
-        width: "100%",
-        height: "811.7px",
-      }}
+      className="absolute inset-0 z-50 flex items-center justify-center bg-black w-full h-[811.7px]"
     >
       <Lottie
         loop={false}
         animationData={netflixAnimation}
         play={true}
-        style={{ width: "100%", height: "100%" }}
+        className="w-full h-full"
         onComplete={handleAnimationComplete}
       />
     </div>

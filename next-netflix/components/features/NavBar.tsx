@@ -24,41 +24,22 @@ export function NavBar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 flex items-center"
-      style={{
-        maxWidth: '375px',
-        height: '57px',
-        paddingTop: '24px',
-        paddingLeft: '16px',
-        backgroundColor: 'transparent',
-        margin: '0 auto'
-      }}
+      className="fixed top-0 left-0 right-0 z-50 flex items-center max-w-[375px] h-[57px] pt-6 pl-4 bg-transparent mx-auto"
     >
       <Link
         href="/home"
-        className="flex items-center"
-        style={{
-          width: '56.67px',
-          height: '100%'
-        }}
+        className="flex items-center w-[56.67px] h-full"
       >
         <NetflixIcon
-          style={{
-            width: '56.67px',
-            height: 'auto'
-          }}
+          className="w-[56.67px] h-auto"
         />
       </Link>
-      <ul className="flex items-center ml-6" style={{ gap: '32px' }}>
+      <ul className="flex items-center ml-6 gap-8">
         {menuItems.map(({ href, label }) => (
           <li key={href}>
             <Link
               href={href}
-              style={{
-                fontSize: '17.2px',
-                whiteSpace: 'nowrap'
-              }}
-              className="text-white"
+              className="text-white text-[17.2px] whitespace-nowrap"
             >
               {label}
             </Link>

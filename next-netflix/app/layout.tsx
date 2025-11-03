@@ -28,24 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        style={{
-          margin: 0,
-          padding: 0,
-          display: "flex",
-          justifyContent: "center",
-          backgroundColor: "#000",
-        }}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased m-0 p-0 flex justify-center bg-black`}
       >
         <Providers>
           <div
-            className="min-h-dvh pb-[calc(72px+env(safe-area-inset-bottom))]"
-            style={{
-              width: "375px",
-              minHeight: "811.7px",
-              backgroundColor: "#000",
-              position: "relative",
-            }}
+            className="min-h-dvh pb-[calc(72px+env(safe-area-inset-bottom))] w-[375px] bg-black relative"
           >
             <NavBar />
             {children}

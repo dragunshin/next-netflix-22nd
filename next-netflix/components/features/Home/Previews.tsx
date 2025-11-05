@@ -39,7 +39,6 @@ export default function Previews({ movies }: PreviewsProps) {
               key={m.id}
               href={href}
               className="snap-start focus:outline-none"
-              aria-label={`${m.title} 상세 보기`}
             >
               <div className="relative h-28 w-28 shrink-0 rounded-full bg-neutral-800 ring-1 ring-white/10">
                 {src && (

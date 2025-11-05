@@ -6,6 +6,7 @@ import {
   getPopularMovies,
   getTopRatedMovies,
 } from "@/lib/tmdbServer";
+import Popular from "@/components/features/Home/Popular";
 
 export default async function Home() {
   // SSR: 서버에서 데이터 페칭
@@ -21,6 +22,7 @@ export default async function Home() {
         <Thumb movies={trendingData.results} />
         <Previews movies={topRatedData.results} />
         <Continue movies={popularData.results} />
+        <Popular movies={trendingData.results} />
       </main>
     </>
   );

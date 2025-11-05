@@ -6,17 +6,17 @@ import fallbackPoster from "@/public/fallback.svg";
 import type { TMDBMovie } from "@/types/tmdb";
 import Link from "next/link";
 
-interface ContinueProps {
+interface PopularProps {
   movies: TMDBMovie[];
 }
 
-export default function Continue({ movies }: ContinueProps) {
+export default function Popular({ movies }: PopularProps) {
   const items = movies;
 
   return (
     <section className="bg-black px-4 pb-5">
       <h2 className="mb-4 text-white text-[21px] font-bold">
-        Continue Watching for Hammoo
+        Popular on Netflix
       </h2>
 
       <div className="flex snap-x gap-3 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useSearchMovies } from "@/hooks/useSearchMovies";
 import { useTopRatedMovies } from "@/hooks/useTopRatedMovies";
@@ -11,10 +11,32 @@ import PlayIcon from "@/images/searchPage/play.svg";
 
 export default function SearchPage() {
   const [query, setQuery] = useState("");
-  const { data, isLoading } = useSearchMovies(query);
+  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useSearchMovies(query);
   const { data: topRatedData, isLoading: topRatedLoading } = useTopRatedMovies();
-  const results = data?.results ?? [];
+  const results = data?.pages.flatMap((page) => page.results) ?? [];
   const topSearches = topRatedData?.results?.slice(0, 10) ?? [];
+
+  const observerTarget = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
+          fetchNextPage();
+        }
+      },
+      {
+        threshold: 0,
+        rootMargin: '200px', // 화면 하단 200px 전에 미리 로드
+      }
+    );
+
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   return (
     <div className="min-h-screen bg-black pt-[44px]">
@@ -135,6 +157,21 @@ export default function SearchPage() {
                     </div>
                   );
                 })}
+
+                {/* Infinite scroll trigger */}
+                <div ref={observerTarget} className="h-20" />
+
+                {/* Loading more skeleton */}
+                {isFetchingNextPage && (
+                  <div className="space-y-0">
+                    {Array.from({ length: 3 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center bg-[#424242] mb-[3px] h-[76px] animate-pulse"
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             ) : null}
           </div>

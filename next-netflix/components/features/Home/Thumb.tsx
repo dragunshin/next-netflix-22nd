@@ -13,20 +13,13 @@ interface ThumbProps {
 
 export default function Thumb({ movies }: ThumbProps) {
   const m = movies?.[0];
-  const src =
-    tmdbImage(m?.backdrop_path, "w1280") || tmdbImage(m?.poster_path, "w780");
+  const src = tmdbImage(m?.backdrop_path, "w1280") || tmdbImage(m?.poster_path, "w780");
 
   return (
     <section className="w-full bg-black">
       <div className="relative h-[415px] w-full overflow-hidden">
         {src ? (
-          <Image
-            src={src}
-            alt={m?.title ?? "thumb"}
-            fill
-            priority
-            className="object-cover"
-          />
+          <Image src={src} alt={m?.title ?? "thumb"} fill priority className="object-cover" />
         ) : (
           <div className="h-full w-full bg-neutral-800" />
         )}

@@ -51,8 +51,7 @@ export function TabBar() {
         "
       >
         {items.map(({ href, label, Icon, adjust }) => {
-          const active =
-            href === "/home" ? pathname === "/home" : pathname.startsWith(href);
+          const active = href === "/home" ? pathname === "/home" : pathname.startsWith(href);
 
           return (
             <li key={href} className="flex flex-col items-center">
@@ -66,11 +65,7 @@ export function TabBar() {
                     .filter(Boolean)
                     .join(" ")}
                 />
-                <span
-                  className={`text-[8.2px] ${
-                    active ? "text-white" : "text-[#8c8787]"
-                  }`}
-                >
+                <span className={`text-[8.2px] ${active ? "text-white" : "text-[#8c8787]"}`}>
                   {label}
                 </span>
               </Link>

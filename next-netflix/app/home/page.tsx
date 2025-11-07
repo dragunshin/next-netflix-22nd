@@ -1,11 +1,7 @@
 import Previews from "../../components/features/Home/Previews";
 import Thumb from "../../components/features/Home/Thumb";
 import Continue from "../../components/features/Home/Continue";
-import {
-  getTrendingMoviesDay,
-  getPopularMovies,
-  getTopRatedMovies,
-} from "@/lib/tmdbServer";
+import { getTrendingMoviesDay, getPopularMovies, getTopRatedMovies } from "@/lib/tmdbServer";
 import Popular from "@/components/features/Home/Popular";
 
 export default async function Home() {

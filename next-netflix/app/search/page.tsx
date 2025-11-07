@@ -11,7 +11,8 @@ import PlayIcon from "@/images/searchPage/play.svg";
 
 export default function SearchPage() {
   const [query, setQuery] = useState("");
-  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useSearchMovies(query);
+  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useSearchMovies(query);
   const { data: topRatedData, isLoading: topRatedLoading } = useTopRatedMovies();
   const results = data?.pages.flatMap((page) => page.results) ?? [];
   const topSearches = topRatedData?.results?.slice(0, 10) ?? [];
@@ -27,7 +28,7 @@ export default function SearchPage() {
       },
       {
         threshold: 0,
-        rootMargin: '200px', // 화면 하단 200px 전에 미리 로드
+        rootMargin: "200px", // 화면 하단 200px 전에 미리 로드
       }
     );
 
@@ -51,10 +52,7 @@ export default function SearchPage() {
           onChange={(e) => setQuery(e.target.value)}
           autoFocus
         />
-        <button
-          onClick={() => setQuery("")}
-          className="p-1 shrink-0"
-        >
+        <button onClick={() => setQuery("")} className="p-1 shrink-0">
           <DeleteIcon className="w-5 h-5" />
         </button>
       </div>
@@ -64,48 +62,42 @@ export default function SearchPage() {
         {!query ? (
           // Top Searches
           <div>
-            <h2 className="text-white text-[26.75px] font-bold mb-6 px-2">
-              Top Searches
-            </h2>
+            <h2 className="text-white text-[26.75px] font-bold mb-6 px-2">Top Searches</h2>
             <div className="space-y-0">
-              {topRatedLoading ? (
-                Array.from({ length: 5 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center bg-[#424242] mb-[3px] h-[76px] animate-pulse"
-                  />
-                ))
-              ) : (
-                topSearches.map((movie) => {
-                  const src = tmdbImage(movie.backdrop_path || movie.poster_path, "w780");
-                  return (
+              {topRatedLoading
+                ? Array.from({ length: 5 }).map((_, i) => (
                     <div
-                      key={movie.id}
-                      className="flex items-center bg-[#424242] mb-[3px] overflow-hidden"
-                    >
-                      <div className="relative w-[146px] h-[76px] bg-neutral-800 shrink-0">
-                        {src && (
-                          <Image
-                            src={src}
-                            alt={movie.title}
-                            fill
-                            className="object-cover"
-                            sizes="146px"
-                          />
-                        )}
+                      key={i}
+                      className="flex items-center bg-[#424242] mb-[3px] h-[76px] animate-pulse"
+                    />
+                  ))
+                : topSearches.map((movie) => {
+                    const src = tmdbImage(movie.backdrop_path || movie.poster_path, "w780");
+                    return (
+                      <div
+                        key={movie.id}
+                        className="flex items-center bg-[#424242] mb-[3px] overflow-hidden"
+                      >
+                        <div className="relative w-[146px] h-[76px] bg-neutral-800 shrink-0">
+                          {src && (
+                            <Image
+                              src={src}
+                              alt={movie.title}
+                              fill
+                              className="object-cover"
+                              sizes="146px"
+                            />
+                          )}
+                        </div>
+                        <div className="flex-1 flex items-center justify-between pl-4 pr-3">
+                          <p className="text-white text-[14.72px] tracking-tight">{movie.title}</p>
+                          <button className="shrink-0">
+                            <PlayIcon className="w-7 h-7" />
+                          </button>
+                        </div>
                       </div>
-                      <div className="flex-1 flex items-center justify-between pl-4 pr-3">
-                        <p className="text-white text-[14.72px] tracking-tight">
-                          {movie.title}
-                        </p>
-                        <button className="shrink-0">
-                          <PlayIcon className="w-7 h-7" />
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })
-              )}
+                    );
+                  })}
             </div>
           </div>
         ) : (
@@ -140,9 +132,7 @@ export default function SearchPage() {
                           />
                         ) : (
                           <div className="flex items-center justify-center h-full">
-                            <p className="text-white/40 text-xs text-center px-2">
-                              {movie.title}
-                            </p>
+                            <p className="text-white/40 text-xs text-center px-2">{movie.title}</p>
                           </div>
                         )}
                       </div>

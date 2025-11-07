@@ -15,9 +15,7 @@ export default function Popular({ movies }: PopularProps) {
 
   return (
     <section className="bg-black px-4 pb-5">
-      <h2 className="mb-4 text-white text-[21px] font-bold">
-        Popular on Netflix
-      </h2>
+      <h2 className="mb-4 text-white text-[21px] font-bold">Popular on Netflix</h2>
 
       <div className="flex snap-x gap-3 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {items.map((m) => {
@@ -52,8 +50,7 @@ export default function Popular({ movies }: PopularProps) {
                 sizes="103px"
                 onError={(e) => {
                   const img = e.currentTarget as HTMLImageElement;
-                  if (img.src !== fallbackPoster.src)
-                    img.src = fallbackPoster.src;
+                  if (img.src !== fallbackPoster.src) img.src = fallbackPoster.src;
                 }}
               />
             </Link>

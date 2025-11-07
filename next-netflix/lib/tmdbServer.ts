@@ -27,20 +27,13 @@ async function fetchTMDB<T>(path: string, language = "en-US"): Promise<T> {
 export async function getTrendingMoviesDay(
   language = "en-US"
 ): Promise<TMDBListResponse<TMDBMovie>> {
-  return fetchTMDB<TMDBListResponse<TMDBMovie>>(
-    "trending/movie/day",
-    language
-  );
+  return fetchTMDB<TMDBListResponse<TMDBMovie>>("trending/movie/day", language);
 }
 
-export async function getPopularMovies(
-  language = "en-US"
-): Promise<TMDBListResponse<TMDBMovie>> {
+export async function getPopularMovies(language = "en-US"): Promise<TMDBListResponse<TMDBMovie>> {
   return fetchTMDB<TMDBListResponse<TMDBMovie>>("movie/popular", language);
 }
 
-export async function getTopRatedMovies(
-  language = "en-US"
-): Promise<TMDBListResponse<TMDBMovie>> {
+export async function getTopRatedMovies(language = "en-US"): Promise<TMDBListResponse<TMDBMovie>> {
   return fetchTMDB<TMDBListResponse<TMDBMovie>>("movie/top_rated", language);
 }

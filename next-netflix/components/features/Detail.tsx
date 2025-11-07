@@ -13,8 +13,7 @@ export default function Detail() {
 
   const poster = poster_path ? tmdbImage(poster_path, "w500") : "";
 
-  const src =
-    tmdbImage(backdrop_path, "w1280") || tmdbImage(poster_path, "w780");
+  const src = tmdbImage(backdrop_path, "w1280") || tmdbImage(poster_path, "w780");
 
   return (
     <main className="mx-auto max-w-[430px] text-white">

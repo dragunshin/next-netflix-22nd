@@ -12,9 +12,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div
-      className="absolute inset-0 z-50 flex items-center justify-center bg-black w-full h-[811.7px]"
-    >
+    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black w-full h-[811.7px]">
       <Lottie
         loop={false}
         animationData={netflixAnimation}

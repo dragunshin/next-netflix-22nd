@@ -13,12 +13,20 @@ export default function SearchPage() {
   const [query, setQuery] = useState("");
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useSearchMovies(query);
-  const { data: topRatedData, isLoading: topRatedLoading } = useTopRatedMovies();
+  const {
+    data: topRatedData,
+    isLoading: topRatedLoading,
+    fetchNextPage: fetchNextTopRated,
+    hasNextPage: hasNextTopRated,
+    isFetchingNextPage: isFetchingNextTopRated
+  } = useTopRatedMovies();
   const results = data?.pages.flatMap((page) => page.results) ?? [];
-  const topSearches = topRatedData?.results?.slice(0, 10) ?? [];
+  const topSearches = topRatedData?.pages.flatMap((page) => page.results) ?? [];
 
   const observerTarget = useRef<HTMLDivElement>(null);
+  const topSearchObserverTarget = useRef<HTMLDivElement>(null);
 
+  // 검색 결과 무한 스크롤
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -38,6 +46,27 @@ export default function SearchPage() {
 
     return () => observer.disconnect();
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
+
+  // Top Searches 무한 스크롤
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasNextTopRated && !isFetchingNextTopRated) {
+          fetchNextTopRated();
+        }
+      },
+      {
+        threshold: 0,
+        rootMargin: "200px",
+      }
+    );
+
+    if (topSearchObserverTarget.current) {
+      observer.observe(topSearchObserverTarget.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasNextTopRated, isFetchingNextTopRated, fetchNextTopRated]);
 
   return (
     <div className="min-h-screen bg-black pt-[44px]">
@@ -98,6 +127,21 @@ export default function SearchPage() {
                       </div>
                     );
                   })}
+
+              {/* Top Searches Infinite scroll trigger */}
+              <div ref={topSearchObserverTarget} className="h-20" />
+
+              {/* Loading more skeleton */}
+              {isFetchingNextTopRated && (
+                <div className="space-y-0">
+                  {Array.from({ length: 3 }).map((_, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center bg-[#424242] mb-[3px] h-[76px] animate-pulse"
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         ) : (
